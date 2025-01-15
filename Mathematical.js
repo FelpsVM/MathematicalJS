@@ -1,4 +1,4 @@
-var version = 2.0
+var version = 4.0
 
 export function random_number(a = 1, b=10) {
     if (a < 0 || b < 0) {
@@ -70,9 +70,6 @@ export function solveLinearEquation(equation) {
     return x;
 }
 
-// Exemplo de uso
-console.log(solveLinearEquation("2x + 1 = 5")); // Saída: 2
-
 export function PI(quanty = 2) {
     if (quanty < 0) {
         console.log(`(MathematicalJS)Negative numbers error: In Mathematical.js ${version} we do not handle numbers smaller than 0!`)
@@ -90,5 +87,36 @@ export function PI(quanty = 2) {
 
     // Arredonda o resultado para a quantidade de casas decimais desejadas
     return parseFloat(pi.toFixed(quanty));
+    }
+}
+
+export function division(a = 2, b = 1, rest = false) {
+    if (a < 0 || b < 0) {
+        console.log(`(MathematicalJS)Negative numbers error: In Mathematical.js ${version} we do not handle numbers smaller than 0!`)
+        return(`(MathematicalJS)Negative numbers error: In Mathematical.js ${version} we do not handle numbers smaller than 0!`)
+    } else if (typeof(a) != "number" || typeof(b) != "number") {
+        console.log("(MathematicalJS)Data Type error: If you received this, it means that either your first argument the dividend gave NaN or the second (divisor) gave NaN too, or else the boolean value to show whether or not the remainder was set to another value!")
+        return("(MathematicalJS)Data Type error: If you received this, it means that either your first argument the dividend gave NaN or the second (divisor) gave NaN too, or else the boolean value to show whether or not the remainder was set to another value!")
+    } else if (a == 0 || b == 0) {
+        console.log("(MathematicalJS)There is no way to work with 0 in the division, not at least in the version: " + version)
+        result ("(MathematicalJS)There is no way to work with 0 in the division, not at least in the version: " + version)
+    } else {
+        var result = a / b
+        if (rest) {
+            return Number.parseFloat(result)
+        } else {
+            return Number.parseInt(result)
+        }
+    }
+}
+
+export function multiply(a = 2, b = 2) {
+    if (a < 0 || b < 0 || typeof(a) == "float" || typeof(b) == "float") {
+        console.log(`(MathematicalJS)Error negative numbers or floats: In mathematicalJS(${version}) we do not work with negative numbers or floats when multiplying!`)
+        return ((`(MathematicalJS)Error negative numbers or floats: In mathematicalJS(${version}) we do not work with negative numbers or floats when multiplying!`))
+    } else if (a == 0 || b == 0){
+        return 0
+    } else {
+        return a * b
     }
 }
