@@ -1,4 +1,4 @@
-var version = 4.0
+var version = 5.0
 
 export function random_number(a = 1, b=10) {
     if (a < 0 || b < 0) {
@@ -120,3 +120,35 @@ export function multiply(a = 2, b = 2) {
         return a * b
     }
 }
+
+export function solveQuadraticEquation(a = 1, b = 0, c = 0) {
+    if (a < 0 || b < 0 || c < 0) {
+        console.log(`(MathematicalJS)Negative numbers error: In Mathematical.js ${version} we do not handle numbers smaller than 0!`)
+        return(`(MathematicalJS)Negative numbers error: In Mathematical.js ${version} we do not handle numbers smaller than 0!`)
+    } else if (typeof(a) != "number" || typeof(b) != "number" || typeof(c) != "number") {
+        console.log("(MathematicalJS)Data Type error: There is no way to solve quadratic equation with NaN coefficients")
+        return("(MathematicalJS)Data Type error: There is no way to solve quadratic equation with NaN coefficients")
+    } else if (a === 0) {
+        console.log("(MathematicalJS)Invalid equation error: Coefficient 'a' cannot be zero in a quadratic equation")
+        return("(MathematicalJS)Invalid equation error: Coefficient 'a' cannot be zero in a quadratic equation")
+    } else {
+        // Calcula o discriminante (delta)
+        const delta = b * b - 4 * a * c;
+        
+        // Verifica se há raízes reais
+        if (delta < 0) {
+            console.log("(MathematicalJS)No real roots error: The equation has no real solutions")
+            return("(MathematicalJS)No real roots error: The equation has no real solutions")
+        }
+        
+        // Calcula as raízes usando a fórmula de Bhaskara
+        const x1 = (-b + Math.sqrt(delta)) / (2 * a);
+        const x2 = (-b - Math.sqrt(delta)) / (2 * a);
+        
+        return {
+            x1: Number(x1.toFixed(2)),
+            x2: Number(x2.toFixed(2))
+        };
+    }
+}
+
